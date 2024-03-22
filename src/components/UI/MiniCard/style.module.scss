@@ -1,0 +1,83 @@
+@import 'styles/unit.scss';
+@import 'styles/media.scss';
+
+.card {
+  border-radius: rem(12);
+  background-color: #fff;
+  border: 1px solid var(--lightgray-4);
+  display: flex;
+  padding: rem(8);
+  margin-right: rem(12);
+  &_img {
+    height: rem(64);
+    width: rem(64);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: rem(8);
+    .title {
+      line-height: rem(18);
+      font-size: rem(14);
+      margin-bottom: rem(8);
+      font-weight: 500;
+      color: var(--darkgray-2);
+    }
+  }
+  animation: fadeout 1s ease forwards;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialog_content {
+  z-index: 1;
+  position: relative;
+  h4 {
+    font-size: rem(14);
+    font-weight: 500;
+    color: var(--darkgray-1);
+  }
+  .single_modifier {
+    margin-top: rem(20);
+    h4 {
+      margin-bottom: rem(12);
+    }
+  }
+  .modifier_group,
+  .option_group {
+    border: 1px solid var(--lightgray-2);
+    border-radius: rem(12);
+    padding: rem(12) rem(12) rem(3);
+    margin-top: rem(20);
+    h4 {
+      margin-bottom: 3px;
+    }
+  }
+  .option_group {
+    .option {
+      :global .MuiFormControlLabel-label {
+        font-size: rem(12);
+      }
+    }
+  }
+  .modifier_group_checkbox {
+    margin-top: rem(20);
+    h4 {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 8px;
+    }
+  }
+}

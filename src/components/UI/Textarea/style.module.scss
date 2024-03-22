@@ -1,0 +1,20 @@
+@import 'styles/unit.scss';
+
+.formControl {
+  .textarea {
+    outline: none;
+    font-size: 14px;
+    line-height: 16px;
+    width: 100%;
+    height: rem(96);
+    background-color: var(--lightgray);
+    padding: rem(12) rem(16);
+    border-radius: rem(12);
+    resize: none;
+    border: none;
+    outline: none;
+    &::placeholder {
+      color: var(--lightgray-2);
+    }
+  }
+}

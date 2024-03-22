@@ -1,0 +1,40 @@
+{
+  "name": "telegram_webapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.6.2",
+    "@pbe/react-yandex-maps": "^1.2.4",
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^0.26.1",
+    "classnames": "^2.3.2",
+    "next": "12.1.5",
+    "next-translate": "1.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-input-mask": "^2.0.4",
+    "react-redux": "^8.1.1",
+    "react-slick": "^0.29.0",
+    "react-toastify": "^9.0.8",
+    "redux-persist": "^6.0.0",
+    "sass": "^1.50.1",
+    "slick-carousel": "^1.8.1",
+    "swr": "^2.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.10",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.5",
+    "typescript": "^4.9.5"
+  }
+}

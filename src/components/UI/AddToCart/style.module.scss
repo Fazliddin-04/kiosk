@@ -1,0 +1,68 @@
+@import 'styles/unit.scss';
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: rem(8);
+  height: 32px;
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #fff;
+    font-size: rem(14);
+    font-weight: 500;
+    transition: 100ms ease;
+    white-space: nowrap;
+    line-height: rem(20);
+    user-select: none;
+    height: 32px;
+    max-height: 32px;
+    overflow: hidden;
+  }
+  &::after,
+  &::before {
+    content: '';
+    background-color: var(--mui-palette-primary-main);
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    transition: 200ms ease-in;
+  }
+  &::after {
+    right: 0px;
+  }
+
+  &::before {
+    left: 0px;
+  }
+
+  .counter {
+    background-color: transparent;
+    max-height: 0px;
+    width: 100%;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity max-height 200ms ease;
+    z-index: -1;
+  }
+  &.isOrdered {
+    &::after,
+    &::before {
+      width: 32px;
+      border-radius: 8px;
+    }
+    .counter {
+      max-height: 32px;
+      opacity: 1;
+    }
+    .button {
+      max-height: 0px;
+    }
+  }
+}

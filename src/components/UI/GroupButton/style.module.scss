@@ -1,0 +1,79 @@
+@import 'styles/unit.scss';
+@import 'styles/media.scss';
+
+.groupButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: rem(24);
+  padding-right: rem(24);
+  border-radius: rem(12);
+  font-size: rem(14);
+  font-weight: 500;
+  height: rem(48);
+  padding-top: rem(14);
+  padding-bottom: rem(14);
+  transition: 150ms ease;
+  text-transform: capitalize;
+  white-space: nowrap;
+  background-color: transparent;
+  &:hover {
+    opacity: 0.9;
+    background: var(--mui-palette-secondary-main);
+    color: var(--mui-palette-primary-main);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+  &.active {
+    background-color: var(--mui-palette-secondary-main);
+    color: var(--mui-palette-primary-main);
+  }
+  &.primary {
+    background-color: var(--mui-palette-secondary-main);
+    color: var(--darkgray-5);
+  }
+  &.primary.active {
+    background-color: var(--mui-palette-primary-main);
+    color: #fff;
+  }
+  &.sm {
+    width: fit-content;
+    height: auto;
+    padding: rem(8) rem(12);
+    border: 1px solid #f6f8f9;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.04);
+  }
+  &.md {
+    height: rem(44);
+    padding-top: rem(8);
+    padding-bottom: rem(8);
+    border-radius: rem(22);
+  }
+  @include media($sm) {
+    &.md {
+      padding-top: rem(10);
+      padding-bottom: rem(10);
+    }
+  }
+  @include media($lg) {
+    font-size: rem(16);
+    width: rem(312);
+    &.md {
+      width: rem(144);
+    }
+    &.sm {
+      padding: rem(12) rem(16);
+    }
+  }
+  animation: fadeOut 400ms ease forwards;
+  opacity: 0;
+  @keyframes fadeOut {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
