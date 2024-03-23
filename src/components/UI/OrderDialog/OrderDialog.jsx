@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { useDispatch } from 'react-redux'
 // Utils & Redux store
 import numToPrice from 'utils/numToPrice'
-import { incrementQuantity, decrementQuantity } from 'store/cart/cartSlice'
+import { INCREMENT, DECREMENT } from 'store/cart/cartSlice'
 // MUI
 import {
   Dialog,
@@ -107,13 +107,13 @@ function OrderDialog({
               }
               onIncrease={() =>
                 productInCart?.quantity
-                  ? dispatch(incrementQuantity(productInCart?.key))
+                  ? dispatch(INCREMENT(productInCart?.key))
                   : setQuantity((prevState) => ++prevState)
               }
               onDecrease={() => {
                 productInCart?.quantity && isOrdered
                   ? productInCart.quantity > 1
-                    ? dispatch(decrementQuantity(productInCart?.key))
+                    ? dispatch(DECREMENT(productInCart?.key))
                     : removeHandler()
                   : quantity > 1
                   ? setQuantity((prevState) => --prevState)
