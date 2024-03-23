@@ -15,8 +15,8 @@
   transition: 200ms;
   white-space: nowrap;
   &.active {
-    background-color: var(--mui-palette-secondary-main);
-    color: var(--mui-palette-primary-main);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
   }
   &.with_img {
     padding: 0px;
@@ -41,10 +41,10 @@
     }
     &.active {
       background-color: transparent;
-      color: var(--mui-palette-secondary-main);
+      color: var(--secondary-color);
       -webkit-text-stroke-width: 0.3px;
       .img {
-        background-color: var(--mui-palette-secondary-main);
+        background-color: var(--secondary-color);
         color: var(--mui-palette-secondary-contrastText);
       }
     }

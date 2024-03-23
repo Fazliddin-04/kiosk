@@ -12,33 +12,6 @@
   border-radius: rem(12);
   overflow: hidden;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.05);
-  &.small {
-    width: rem(150);
-    .card_img {
-      height: rem(134);
-      img {
-        height: 100%;
-      }
-    }
-    .card_actions {
-      gap: 0;
-      margin-top: 0;
-      flex-direction: column;
-      width: 100%;
-      p {
-        font-size: rem(16);
-        margin-bottom: rem(12);
-      }
-    }
-    .title {
-      font-size: rem(14);
-      height: rem(40);
-      margin-bottom: rem(8);
-    }
-    .unavailable {
-      font-size: rem(14);
-    }
-  }
   &_img {
     position: relative;
     height: rem(102);
@@ -87,11 +60,12 @@
       margin-bottom: rem(4);
       margin-left: rem(4);
     }
-    // .description {
-    //   cursor: pointer;
-    //   font-size: rem(12);
-    //   color: var(--darkgray-4);
-    // }
+    .description {
+      cursor: pointer;
+      font-size: rem(12);
+      font-weight: 400;
+      color: var(--darkgray-4);
+    }
     p {
       white-space: nowrap;
       font-size: rem(16);
@@ -111,12 +85,15 @@
   }
   .card_actions {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     margin-top: rem(8);
+    .price span {
+      font-size: 12px;
+    }
     .counter {
-      width: 100%;
+      width: 92px;
+      height: 32px;
       justify-content: space-between;
     }
   }

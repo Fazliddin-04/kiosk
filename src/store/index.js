@@ -14,7 +14,7 @@ import sessionStorage from 'redux-persist/lib/storage/session'
 import authReducer from './auth/authSlice'
 import orderReducer from './order/orderSlice'
 import cartReducer from './cart/cartSlice'
-import queryReducer from './queries/querySlice'
+import commonReducer from './common/common.slice'
 
 const authConfig = {
   key: 'auth',
@@ -28,8 +28,8 @@ const cartConfig = {
   storage: sessionStorage,
 }
 
-const queryConfig = {
-  key: 'query',
+const commonConfig = {
+  key: 'common',
   version: 1,
   storage: sessionStorage,
 }
@@ -44,7 +44,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authConfig, authReducer),
   cart: persistReducer(cartConfig, cartReducer),
   order: persistReducer(orderConfig, orderReducer),
-  query: persistReducer(queryConfig, queryReducer),
+  common: persistReducer(commonConfig, commonReducer),
 })
 
 export const store = configureStore({

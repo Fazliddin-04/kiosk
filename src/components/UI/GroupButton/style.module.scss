@@ -19,22 +19,22 @@
   background-color: transparent;
   &:hover {
     opacity: 0.9;
-    background: var(--mui-palette-secondary-main);
-    color: var(--mui-palette-primary-main);
+    background: var(--secondary-color);
+    color: var(--primary-color);
   }
   &:active {
     transform: scale(0.95);
   }
   &.active {
-    background-color: var(--mui-palette-secondary-main);
-    color: var(--mui-palette-primary-main);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
   }
   &.primary {
-    background-color: var(--mui-palette-secondary-main);
+    background-color: var(--secondary-color);
     color: var(--darkgray-5);
   }
   &.primary.active {
-    background-color: var(--mui-palette-primary-main);
+    background-color: var(--primary-color);
     color: #fff;
   }
   &.sm {

@@ -61,6 +61,10 @@
       .actions {
         padding: rem(12) rem(24) rem(24) 0;
         gap: rem(8);
+        .counter {
+          width: rem(96);
+          height: rem(32);
+        }
       }
       :global .MuiDialogContent-root {
         padding-left: 0;
@@ -130,22 +134,5 @@
     align-items: center;
     justify-content: center;
     min-width: fit-content;
-  }
-  @include media($lg) {
-    .content {
-      &_wrapper {
-        .title {
-          font-weight: 700;
-          font-size: rem(24);
-          line-height: rem(28);
-        }
-      }
-      .actions {
-        .counter {
-          width: rem(132);
-          height: rem(42);
-        }
-      }
-    }
   }
 }

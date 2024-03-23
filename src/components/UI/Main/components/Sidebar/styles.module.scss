@@ -1,0 +1,26 @@
+.sidebar {
+  min-width: 216px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: calc(100vh - 332px);
+  overflow-y: auto;
+  border-right: 1px solid #eef0f2;
+  .item {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 12px;
+    font-weight: 700;
+    min-height: 64px;
+    padding: 8px 12px;
+    gap: 10px;
+    box-shadow: 0px 1px 2px 0px #1018280d;
+    transition: 150ms ease-in-out;
+    &.active {
+      background: #f1eff4;
+      color: var(--primary-color);
+    }
+  }
+}

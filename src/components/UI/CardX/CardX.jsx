@@ -140,113 +140,84 @@ function CardX({ product, className, ordered }) {
     <>
       <div
         className={classNames(styles.cardX, {
-          [styles.ordered]: ordered,
           [className]: className,
         })}
       >
         <div className={styles.cardX_img}>
-          {productData?.title && !ordered ? (
+          {productData?.title && (
             <Image
               src={
                 productData?.image
                   ? process.env.BASE_URL + productData?.image
-                  : process.env.BASE_URL +
-                    '9440048a-fe6b-4be7-9541-d94d2a8d1951'
+                  : process.env.DEFAULT_IMG
               }
               alt={productData?.title[router.locale]}
               objectFit="cover"
               layout="fill"
               priority={true}
             />
-          ) : (
-            ordered &&
-            product && (
-              <Image
-                src={
-                  product?.image
-                    ? process.env.BASE_URL + product?.image
-                    : process.env.BASE_URL +
-                      'f1bedaa2-2682-4fe1-9564-05a31aa66852'
-                }
-                alt={product?.name}
-                objectFit="cover"
-                layout="fill"
-                priority={true}
-              />
-            )
           )}
         </div>
         <div className={styles.content}>
-          <div>
-            <h4
-              className={classNames(styles.title, {
-                [styles.loading]: productData == null && !ordered,
-              })}
-            >
-              {ordered ? (
-                <>
-                  {product?.name}
-                  <br />
-                  {product?.quantity} {t('pcs')}
-                </>
-              ) : (
-                productData?.title && productData?.title[router.locale]
-              )}
-            </h4>
-            {!ordered && (
-              <p
-                className={classNames(styles.description, {
-                  [styles.loading]:
-                    (ordered && !product) || (!ordered && !productData),
-                })}
-              >
-                {variantsInfo.length > 0 &&
-                  variantsInfo.map((variant, idx) => (
-                    <span
-                      key={
-                        product?.variants[idx].group_id +
-                        product?.variants[idx].variant_id
-                      }
-                    >
-                      {variant.title[router.locale]} (
-                      {product?.variants[idx].variant_id === variant.id &&
-                        product?.variants[idx].quantity}{' '}
-                      {t('pcs')}){variantsInfo?.length - 1 !== idx && ', '}
-                      {}
-                    </span>
-                  ))}
-                {modifiersData?.map((modifier, idx) => (
-                  <span key={modifier.id}>
-                    {modifier.title[router.locale]} ({modifier.quantity}{' '}
-                    {t('pcs')}){modifiersData?.length - 1 !== idx && ', '}
-                  </span>
-                ))}
-                {!modifiers &&
-                  !variantsInfo.length &&
-                  productData?.description &&
-                  productData?.description[router.locale].substring(0, 120) +
-                    (productData?.description[router.locale].length > 120
-                      ? '...'
-                      : '')}
-              </p>
+          <h4
+            className={classNames(styles.title, {
+              [styles.loading]: productData == null && !ordered,
+            })}
+          >
+            {ordered ? (
+              <>
+                {product?.name}
+                <br />
+                {product?.quantity} {t('pcs')}
+              </>
+            ) : (
+              productData?.title && productData?.title[router.locale]
             )}
-          </div>
+          </h4>
+          <p
+            className={classNames(styles.description, {
+              [styles.loading]: !productData,
+            })}
+          >
+            {variantsInfo.length > 0 &&
+              variantsInfo.map((variant, idx) => (
+                <span
+                  key={
+                    product?.variants[idx].group_id +
+                    product?.variants[idx].variant_id
+                  }
+                >
+                  {variant.title[router.locale]} (
+                  {product?.variants[idx].variant_id === variant.id &&
+                    product?.variants[idx].quantity}{' '}
+                  {t('pcs')}){variantsInfo?.length - 1 !== idx && ', '}
+                  {}
+                </span>
+              ))}
+            {modifiersData?.map((modifier, idx) => (
+              <span key={modifier.id}>
+                {modifier.title[router.locale]} ({modifier.quantity} {t('pcs')})
+                {modifiersData?.length - 1 !== idx && ', '}
+              </span>
+            ))}
+            {!modifiers &&
+              !variantsInfo.length &&
+              productData?.description &&
+              productData?.description[router.locale].substring(0, 120) +
+                (productData?.description[router.locale].length > 120
+                  ? '...'
+                  : '')}
+          </p>
           <div className={styles.actions}>
-            {!ordered && (
-              <Counter
-                className={styles.counter}
-                variable={product?.quantity}
-                onDecrease={onDecrease}
-                onIncrease={onIncrease}
-              />
-            )}
             <p className={styles.price}>
-              {ordered ? (
-                <NumberToPrice value={product?.total_amount} />
-              ) : (
-                <NumberToPrice value={product?.price} />
-              )}
-            </p>
+              <NumberToPrice value={product?.price} />
+            </p>{' '}
+            <Counter
+              className={styles.counter}
+              variable={product?.quantity}
+              onDecrease={onDecrease}
+              onIncrease={onIncrease}
+            />
           </div>
         </div>
       </div>

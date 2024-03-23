@@ -89,8 +89,9 @@ function Lang({ onSelect }) {
         alt="maxway"
         width={376}
         height={240}
+        priority={true}
       />
-      <div onClick={() => onSelect('uz')}>
+      <div onClick={() => onSelect('uz')} style={{ marginTop: 48 }}>
         {/* <Image src="/images/uz.svg" alt="" width={36} height={36} />{' '} */}
         {"O'zbekcha"}
       </div>

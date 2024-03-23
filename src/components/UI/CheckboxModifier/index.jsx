@@ -23,11 +23,7 @@ function CheckboxModifier({
     >
       <div className={styles.img}>
         <Image
-          src={
-            img
-              ? process.env.BASE_URL + img
-              : process.env.BASE_URL + '9440048a-fe6b-4be7-9541-d94d2a8d1951'
-          }
+          src={img ? process.env.BASE_URL + img : process.env.DEFAULT_IMG}
           alt={title}
           objectFit="cover"
           layout="fill"

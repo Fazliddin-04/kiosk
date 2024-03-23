@@ -42,7 +42,7 @@
       height: 0;
     }
     &.checked {
-      border-color: var(--mui-palette-primary-main);
+      border-color: var(--primary-color);
       background-color: #fff;
     }
   }
@@ -75,7 +75,7 @@
     backdrop-filter: blur(10px);
     &:not(.advanced) .info {
       h4 {
-        color: var(--mui-palette-primary-main);
+        color: var(--primary-color);
       }
     }
     // background-color: var(--secondary-color);

@@ -1,5 +1,9 @@
 @import 'styles/unit.scss';
 
+.counter {
+  width: rem(92);
+  height: rem(32);
+}
 .wrapper {
   width: 100%;
   position: relative;
@@ -26,7 +30,7 @@
   &::after,
   &::before {
     content: '';
-    background-color: var(--mui-palette-primary-main);
+    background-color: var(--primary-color);
     height: 100%;
     width: 50%;
     position: absolute;
@@ -54,11 +58,13 @@
   &.isOrdered {
     &::after,
     &::before {
-      width: 32px;
+      // width: 32px;
+      width: 0;
       border-radius: 8px;
     }
     .counter {
       max-height: 32px;
+      height: 100%;
       opacity: 1;
     }
     .button {

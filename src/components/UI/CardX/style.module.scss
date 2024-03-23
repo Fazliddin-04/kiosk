@@ -1,150 +1,71 @@
-@import "styles/unit.scss";
-@import "styles/media.scss";
-@import "styles/animation.scss";
+@import 'styles/unit.scss';
+@import 'styles/media.scss';
+@import 'styles/animation.scss';
 
 .cardX {
-  padding: rem(20) rem(16);
+  max-width: 138px;
   border-bottom: 1px solid #0000000f;
+  height: 100%;
   display: flex;
-  &.sm {
-    padding: 0;
-    margin-bottom: rem(20);
-    border-bottom: none;
-    .content {
-      .title {
-        font-size: rem(15);
-        margin-bottom: 0;
-      }
-    }
-    .cardX_img {
-      min-width: rem(40);
-      min-height: rem(40);
-      border-radius: rem(8);
-      margin-right: rem(8);
-    }
-    .actions {
-      .price {
-        font-size: rem(15);
-        width: fit-content;
-      }
-    }
-  }
-  &.ordered {
-    padding: 0 0 rem(10);
-    margin-bottom: rem(20);
-    border-bottom: 1px solid #eef0f2;
-    .content {
-      .title {
-        font-size: rem(15);
-        font-weight: normal;
-        margin-bottom: 0;
-        &:first-of-type {
-          margin-bottom: rem(3);
-        }
-      }
-    }
-    .cardX_img {
-      min-width: rem(62);
-      min-height: rem(62);
-      border-radius: rem(8);
-    }
-    .actions {
-      .price {
-        font-size: rem(17);
-        font-weight: 600;
-        width: fit-content;
-      }
-    }
-  }
+  flex-direction: column;
   .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
     .title {
-      font-size: rem(15);
+      font-size: rem(12);
       margin-bottom: rem(4);
+      font-weight: 700;
       &.loading {
         width: 120px;
         height: 18px;
       }
     }
     .description {
+      flex: 1;
       font-size: rem(8);
-      color: var(--text-light);
+      margin-bottom: rem(8);
       &.loading {
         width: 80px;
         height: 10px;
       }
     }
-  }
-  &_img {
-    overflow: hidden;
-    min-width: rem(60);
-    min-height: rem(60);
-    border-radius: rem(8);
-    margin-right: rem(12);
-    position: relative;
-    border: 1px solid var(--lightgray-2);
-    @include skeleton;
-  }
-  .actions {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    .counter {
-      width: rem(116);
-      div {
-        padding-top: rem(6);
-        padding-bottom: rem(6);
-      }
-      svg {
-        font-size: 20px;
-      }
-    }
-    .price {
-      font-size: 14px;
-      width: 100%;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-  }
-  .loading {
-    @include skeleton;
-  }
-  @include media($xsm) {
-    &_img {
-      min-width: rem(80);
-      min-height: rem(80);
-      border-radius: rem(8);
-      margin-right: rem(12);
-    }
-    .content {
-      .title {
-        font-size: rem(17);
-        &.loading {
-          width: 150px;
-          height: 20px;
-        }
-      }
-      .description {
-        font-size: rem(12);
-        &.loading {
-          width: 100px;
-          height: 14px;
-        }
-      }
-    }
     .actions {
       .counter {
+        background-color: transparent;
+        width: rem(116);
+        border-color: #ffd300;
+        div {
+          padding-top: rem(6);
+          padding-bottom: rem(6);
+        }
         svg {
           font-size: 20px;
         }
       }
       .price {
-        font-size: 16px;
+        font-size: 12px;
+        width: 100%;
+        font-weight: 600;
+        white-space: nowrap;
+        margin-bottom: rem(8);
       }
     }
+  }
+  &_img {
+    overflow: hidden;
+    width: rem(86);
+    height: rem(86);
+    border-radius: rem(8);
+    margin-bottom: rem(8);
+    position: relative;
+    border: 1px solid var(--lightgray-2);
+    @include skeleton;
+  }
+
+  .loading {
+    @include skeleton;
   }
 }
 // Modal styles

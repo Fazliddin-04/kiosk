@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: 54px;
+  background-color: #7e5fa6;
+  border-bottom: 1px solid #eef0f2;
+  color: #fff;
+  font-size: 28px;
+  .time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

@@ -18,9 +18,7 @@ export default function Counter({
     <div
       className={classNames(styles.counter, {
         [styles.unstyled]: unstyled,
-        [styles.tiny]: size == 'tiny',
         [styles.small]: size == 'sm',
-        [styles.big]: size == 'big',
         [className]: className,
       })}
     >

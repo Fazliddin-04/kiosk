@@ -1,7 +1,7 @@
 import Main from '../components/UI/Main/Main'
 import SEO from '../components/SEO'
 
-const WebApp = () => {
+const HomePage = () => {
   return (
     <>
       <SEO title="Mahsulotlar ro'yxati" />
@@ -10,4 +10,4 @@ const WebApp = () => {
   )
 }
 
-export default WebApp
+export default HomePage

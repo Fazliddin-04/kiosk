@@ -171,7 +171,7 @@ function Dropdown({
                   {item.label}
                 </div>
                 {router.locale === item.key && (
-                  <CheckRounded htmlColor="var(--mui-palette-primary-main)" />
+                  <CheckRounded htmlColor="var(--primary-color)" />
                 )}
               </MenuItem>
             </Link>
@@ -189,7 +189,7 @@ function Dropdown({
                 <MenuItem className={styles.menuItem}>
                   {t(item.label)}
                   {router.pathname === `/${item.key}` && (
-                    <CheckRounded htmlColor="var(--mui-palette-primary-main)" />
+                    <CheckRounded htmlColor="var(--primary-color)" />
                   )}
                 </MenuItem>
               </Link>

@@ -5,27 +5,35 @@
   display: flex;
   align-items: center;
   background-color: white;
+  border: 1px solid var(--primary-color);
+  border-radius: rem(20);
+  overflow: hidden;
   user-select: none;
-  gap: rem(12);
   & > div {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1;
   }
   .value {
-    font-weight: 500;
+    font-weight: 600;
   }
   .button {
+    flex: 1;
     appearance: none;
     background: none;
-    background-color: var(--mui-palette-primary-main);
-    color: var(--mui-palette-primary-contrastText);
     font-size: rem(12);
-    border-radius: rem(8);
     outline: none;
-    height: rem(32);
-    width: rem(32);
+    cursor: pointer;
     transition: all 0.15s;
+    @include media($lg) {
+      &:first-of-type {
+        padding-left: 16px;
+      }
+      &:last-of-type {
+        padding-right: 16px;
+      }
+    }
   }
   &.unstyled {
     border: none;
@@ -36,7 +44,6 @@
       height: 100%;
       font-size: rem(8);
       border: none;
-      background-color: transparent;
       cursor: pointer;
       border-radius: rem(4);
       transition: all 0.15s;
@@ -50,33 +57,7 @@
         background-color: var(--lightgray-2);
       }
       &:not(.disabled):active {
-        background-color: var(--mui-palette-secondary-main);
-      }
-    }
-  }
-  &.tiny {
-    border: none;
-    min-width: none;
-    gap: rem(8);
-    border-radius: 0;
-    .button {
-      height: 100%;
-      font-size: rem(8);
-      border: none;
-      cursor: pointer;
-      border-radius: rem(4);
-      transition: all 0.15s;
-      padding: 0;
-      svg {
-        font-size: rem(16);
-      }
-      &.disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-      &:not(.disabled):active {
-        background-color: var(--mui-palette-secondary-main);
-        color: var(--mui-palette-secondary-contrastText);
+        background-color: var(--secondary-color);
       }
     }
   }
@@ -85,12 +66,6 @@
       svg {
         font-size: rem(16);
       }
-    }
-  }
-  &.big {
-    .button {
-      height: 100%;
-      width: rem(44);
     }
   }
 }

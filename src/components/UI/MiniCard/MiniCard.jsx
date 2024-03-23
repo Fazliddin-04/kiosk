@@ -197,7 +197,7 @@ function MiniCard({ product, size }) {
             src={
               product?.image
                 ? process.env.BASE_URL + product?.image
-                : process.env.BASE_URL + '9440048a-fe6b-4be7-9541-d94d2a8d1951'
+                : process.env.DEFAULT_IMG
             }
             alt={product?.title[router.locale]}
             layout="fill"

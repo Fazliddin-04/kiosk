@@ -14,6 +14,7 @@ const nextConfig = nextTranslate({
   },
   env: {
     BASE_URL: baseUrl,
+    DEFAULT_IMG: baseUrl + '812cbd25-1110-4b99-a24c-3d2d14eab3a0',
   },
 })
 

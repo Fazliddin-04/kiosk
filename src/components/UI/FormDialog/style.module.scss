@@ -94,15 +94,12 @@
     }
   }
   .content {
-    padding: rem(12);
-    padding-top: 0;
     .descr {
       color: var(--text-light);
       font-weight: 400;
       font-size: rem(14);
       text-align: center;
-      margin-top: rem(8);
-      margin-bottom: rem(44);
+      margin-bottom: rem(32);
     }
   }
   .closeIcon {

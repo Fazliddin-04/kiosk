@@ -27,7 +27,7 @@
         cursor: not-allowed;
       }
       &:focus {
-        border-color: var(--mui-palette-primary-main);
+        border-color: var(--primary-color);
         outline: none;
       }
       &[type='number']::-webkit-outer-spin-button,

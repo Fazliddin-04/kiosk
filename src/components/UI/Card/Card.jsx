@@ -239,7 +239,7 @@ function Card({ size, product }) {
             src={
               product.image
                 ? process.env.BASE_URL + product.image
-                : process.env.BASE_URL + '9440048a-fe6b-4be7-9541-d94d2a8d1951'
+                : process.env.DEFAULT_IMG
             }
             alt={product.title[router.locale]}
             objectFit="cover"
@@ -255,13 +255,13 @@ function Card({ size, product }) {
           }
         >
           <h4 className={styles.title}>{product.title[router.locale]}</h4>
-          {/* {size !== 'sm' && (
-              <p className={styles.description}>
-                {product.description[router.locale].substring(0, 35) +
-                  (product.description[router.locale].length > 35 ? '...' : '')}
-              </p>
-            )} */}
-          <p>
+          <p className={styles.description}>
+            {product.description[router.locale].substring(0, 35) +
+              (product.description[router.locale].length > 35 ? '...' : '')}
+          </p>
+        </div>
+        <div className={styles.card_actions}>
+          <p className={styles.price}>
             {product?.discounts?.length > 0 ? (
               <>
                 <strike className={styles.original_price}>
@@ -277,27 +277,27 @@ function Card({ size, product }) {
               <NumberToPrice value={product.out_price} />
             )}
           </p>
-        </div>
-        <div className={styles.card_actions}>
-          {(menu_id && product.active_in_menu) || !menu_id ? (
-            <AddToCart
-              onClick={onClickCardHandler}
-              isOrdered={isOrdered}
-              quantity={productInCart?.quantity}
-              onIncrease={() => dispatch(INCREMENT(productInCart?.key))}
-              onDecrease={() => {
-                productInCart?.quantity > 1
-                  ? dispatch(DECREMENT(productInCart?.key))
-                  : removeHandler()
-              }}
-            >
-              {t('add')}
-            </AddToCart>
-          ) : (
-            <Button size="sm" color="grayscale">
-              {t('will_be_later')}
-            </Button>
-          )}
+          <div className={styles.button}>
+            {(menu_id && product.active_in_menu) || !menu_id ? (
+              <AddToCart
+                onClick={onClickCardHandler}
+                isOrdered={isOrdered}
+                quantity={productInCart?.quantity}
+                onIncrease={() => dispatch(INCREMENT(productInCart?.key))}
+                onDecrease={() => {
+                  productInCart?.quantity > 1
+                    ? dispatch(DECREMENT(productInCart?.key))
+                    : removeHandler()
+                }}
+              >
+                {t('add')}
+              </AddToCart>
+            ) : (
+              <Button size="sm" color="grayscale">
+                {t('will_be_later')}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
       <OrderDialog

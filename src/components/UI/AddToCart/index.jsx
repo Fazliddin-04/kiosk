@@ -2,6 +2,7 @@ import { memo } from 'react'
 import styles from './style.module.scss'
 import Counter from '../Counter/Counter'
 import classNames from 'classnames'
+import Button from '../Button/Button'
 
 function AddToCart({
   onClick,
@@ -14,17 +15,22 @@ function AddToCart({
 }) {
   return (
     <div
-      className={classNames(styles.wrapper, { [styles.isOrdered]: isOrdered })}
+    // className={classNames(styles.wrapper, { [styles.isOrdered]: isOrdered })}
     >
-      <div onClick={onClick} className={styles.button} style={{ ...style }}>
-        {children}
-      </div>
-      <Counter
-        className={styles.counter}
-        variable={quantity}
-        onIncrease={onIncrease}
-        onDecrease={onDecrease}
-      />
+      {/* <div onClick={onClick} className={styles.button} style={{ ...style }}> */}
+      {/* </div> */}
+      {isOrdered ? (
+        <Counter
+          className={styles.counter}
+          variable={quantity}
+          onIncrease={onIncrease}
+          onDecrease={onDecrease}
+        />
+      ) : (
+        <Button size="sm" onClick={onClick}>
+          {children}
+        </Button>
+      )}
     </div>
   )
 }

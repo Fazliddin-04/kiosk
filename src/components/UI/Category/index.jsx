@@ -22,11 +22,7 @@ function Category({
       {showImg && (
         <div className={styles.img} style={imgStyle}>
           <Image
-            src={
-              img
-                ? process.env.BASE_URL + img
-                : process.env.BASE_URL + '023e7e85-6d8f-4493-99f5-24b3dfd5a143'
-            }
+            src={img ? process.env.BASE_URL + img : process.env.DEFAULT_IMG}
             alt={title}
             objectFit="cover"
             layout="fill"

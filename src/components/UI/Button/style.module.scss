@@ -5,10 +5,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--mui-palette-primary-main);
+  background-color: var(--primary-color);
   color: #fff;
-  padding: rem(12) rem(24);
-  border-radius: rem(8);
+  padding-top: rem(8);
+  padding-bottom: rem(8);
+  padding-left: rem(18);
+  padding-right: rem(18);
+  border-radius: rem(14);
   font-size: rem(14);
   font-weight: 500;
   transition: 100ms ease;
@@ -22,9 +25,8 @@
     transform: scale(0.98);
   }
   &.secondary {
-    background-color: var(--mui-palette-secondary-main);
-    border: 1px solid var(--mui-palette-primary-main);
-    color: var(--mui-palette-primary-main);
+    background-color: #fff;
+    color: var(--primary-color);
   }
   &.disabled {
     cursor: not-allowed;
@@ -47,5 +49,12 @@
     padding-bottom: rem(6);
     height: auto;
     width: 100%;
+    font-size: 12px;
+  }
+  &.lg {
+    padding-top: rem(12);
+    padding-bottom: rem(12);
+    padding-left: rem(24);
+    padding-right: rem(24);
   }
 }

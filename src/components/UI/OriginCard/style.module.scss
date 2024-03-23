@@ -7,37 +7,12 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #fff;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.05);
-  border-radius: rem(12);
-  height: 100%;
   padding: rem(8);
-  &.small {
-    width: rem(150);
-    .card_img {
-      height: rem(134);
-      img {
-        height: 100%;
-      }
-    }
-    .card_actions {
-      gap: 0;
-      margin-top: 0;
-      flex-direction: column;
-      width: 100%;
-      p {
-        font-size: rem(16);
-        margin-bottom: rem(12);
-      }
-    }
-    .title {
-      font-size: rem(14);
-      height: rem(40);
-      margin-bottom: rem(8);
-    }
-    .unavailable {
-      font-size: rem(14);
-    }
-  }
+  height: 100%;
+  border-radius: rem(12);
+  overflow: hidden;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
   &_img {
     position: relative;
     height: rem(102);
@@ -56,22 +31,6 @@
         filter: grayscale(100%);
       }
     }
-    .unavailable {
-      cursor: default;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #292929cc;
-      backdrop-filter: blur(5px);
-      width: 208px;
-      height: 40px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 24px;
-    }
   }
   &_content {
     flex: 1;
@@ -81,40 +40,29 @@
     padding-top: rem(8);
     .title {
       font-size: rem(14);
+      cursor: pointer;
       font-weight: 400;
       margin-bottom: rem(4);
       margin-left: rem(4);
     }
-    p {
-      white-space: nowrap;
-      font-size: rem(16);
-      font-weight: 600;
-      color: var(--darkgray-2);
-      margin-left: rem(4);
-      span:not(.with_discount),
-      strike {
-        font-size: rem(14);
-        font-weight: normal;
-      }
-      .original_price {
-        color: var(--text-light);
-        font-size: rem(12);
-      }
+    .description {
+      cursor: pointer;
+      font-size: rem(11);
+      font-weight: 400;
+      color: var(--darkgray-4);
     }
-    // .description {
-    //   font-size: rem(12);
-    //   color: var(--darkgray-4);
-    // }
   }
   .card_actions {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    // margin-top: rem(12);
     margin-top: rem(8);
+    .price span {
+      font-size: 12px;
+    }
     .counter {
-      width: 100%;
+      width: 92px;
+      height: 32px;
       justify-content: space-between;
     }
   }

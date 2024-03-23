@@ -70,8 +70,7 @@ function OrderDialog({
               src={
                 product?.image
                   ? process.env.BASE_URL + product?.image
-                  : process.env.BASE_URL +
-                    'ea714a7e-e06d-4a45-9a69-c4a782996e75'
+                  : process.env.DEFAULT_IMG
               }
               alt={product?.title[router.locale]}
               layout="fill"

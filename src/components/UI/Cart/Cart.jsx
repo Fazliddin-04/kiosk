@@ -1,39 +1,37 @@
 import { useState, useEffect, memo, useCallback, useRef } from 'react'
 import Image from 'next/image'
 import useTranslation from 'next-translate/useTranslation'
-import useSWR from 'swr'
-// MUI
-import { ChevronLeftRounded } from '@mui/icons-material'
 // Components
 import CardX from '../CardX/CardX'
 import Button from '../Button/Button'
-import Bill from '../Bill'
 // Style
 import styles from './style.module.scss'
-import axios from 'axios'
 import FormDialog from '../FormDialog/FormDialog'
-import Carousel from '../Carousel/Carousel'
-import MiniCard from '../MiniCard/MiniCard'
-import { fetcher } from 'utils/fetcher'
 import { useDispatch, useSelector } from 'react-redux'
 import { CLEAR } from 'store/cart/cartSlice'
+import { useRouter } from 'next/router'
+import { Box, Grid } from '@mui/material'
+import numToPrice from 'utils/numToPrice'
+import Footer from 'components/UI/Footer'
+import Link from 'next/link'
 
-function Cart({ set }) {
-  const [isDialog, setIsDialog] = useState(false)
+function Cart() {
+  const [isDialog, setDialog] = useState(false)
   const [totalPrice, setTotalPrice] = useState(0)
   const [isLoading, setLoading] = useState(false)
 
+  const router = useRouter()
   const productsId = useRef(null)
   const dispatch = useDispatch()
   const { t } = useTranslation('common')
   const { cart } = useSelector((state) => state.cart)
 
-  const { data: favourites } = useSWR(
-    productsId?.current
-      ? '/v2/product-favourites?product_ids=' + productsId.current
-      : null,
-    fetcher
-  )
+  // const { data: favourites } = useSWR(
+  //   productsId?.current
+  //     ? '/v2/product-favourites?product_ids=' + productsId.current
+  //     : null,
+  //   fetcher
+  // )
 
   useEffect(() => {
     if (cart.length > 0) {
@@ -64,45 +62,13 @@ function Cart({ set }) {
     }
   }, [cart])
 
-  const onSubmit = useCallback(() => {
+  const onSubmit = () => {
     setLoading(true)
-    const data = {
-      message: {
-        from: {
-          id: webApp?.initDataUnsafe?.user?.id,
-          is_bot: false,
-        },
-        chat: {
-          id: tg_chat_id,
-          type: 'private',
-        },
-        date: Date.now(),
-        web_app_data: {
-          button_text: '',
-          data: '',
-        },
-      },
-    }
+    const data = {}
     // Send products data
-    axios
-      .post(process.env.NEXT_PUBLIC_TG_BOT_URL, {
-        id: `${tg_chat_id}:${shipper_id}`,
-        products: cart,
-      })
-      .then((res1) => {
-        if (res1.status === 200) {
-          dispatch(CLEAR())
-          axios.post(webhook_url, data).finally(() => {
-            webApp?.close()
-            setLoading(false)
-          })
-        }
-      })
-      .catch((err) => {
-        setLoading(false)
-      })
+    console.log('submitted!')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cart, tg_chat_id, shipper_id, webApp, webhook_url])
+  }
 
   if (cart.length === 0) {
     return (
@@ -117,7 +83,7 @@ function Cart({ set }) {
           />
           <p>{t('your_basket_is_empty')}</p>
         </div>
-        <Button style={{ width: '100%' }} onClick={() => set(false)}>
+        <Button style={{ width: '100%' }} onClick={() => router.push('/')}>
           {t('back_to_menu')}
         </Button>
       </div>
@@ -127,22 +93,14 @@ function Cart({ set }) {
   return (
     <>
       <div className={styles.cart}>
-        <div className={styles.header}>
-          <div>
-            <div className={styles.back_button}>
-              <ChevronLeftRounded fontSize="large" onClick={() => set(false)} />
-            </div>
-            <h2>{t('cart')}</h2>
-          </div>
-          <div onClick={() => setIsDialog(true)}>Очистить корзину</div>
-        </div>
-        <div className={styles.flexbox_col_between}>
-          <div className={styles.box}>
+        <div className={styles.box}>
+          <Grid columns={4} container p={3}>
             {cart?.map((item) => (
-              <CardX key={item.key} product={item} />
+              <Grid item xs={1} key={item.key}>
+                <CardX product={item} />
+              </Grid>
             ))}
-          </div>
-          {favourites?.favourites?.length > 0 && (
+            {/* {favourites?.favourites?.length > 0 && (
             <div className={styles.favourites}>
               <h3>{t('something_else?')}</h3>
               <Carousel>
@@ -151,29 +109,49 @@ function Cart({ set }) {
                 ))}
               </Carousel>
             </div>
-          )}
-
-          <div>
-            <Bill totalPrice={totalPrice} />
-            <Button
-              color={isLoading ? 'disabled' : 'primary'}
-              type="submit"
-              onClick={onSubmit}
-            >
-              {t('checkout_order')}
-            </Button>
-          </div>
+          )} */}
+          </Grid>
         </div>
+        <Grid
+          columns={3}
+          container
+          sx={{ placeItems: 'center' }}
+          p={3}
+          borderTop="1px solid #fff"
+          borderBottom="1px solid #fff"
+          fontSize={24}
+          fontWeight={700}
+        >
+          <Grid item xs={1}>
+            Итого
+          </Grid>
+          <Grid item xs={1}>
+            <p style={{ textAlign: 'center', color: '#FFD300' }}>
+              {numToPrice(totalPrice)}
+            </p>
+          </Grid>
+          <Grid item xs={1}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Link href="/checkout" passHref>
+                <Button color={isLoading ? 'disabled' : 'secondary'}>
+                  {t('checkout_order')}
+                </Button>
+              </Link>
+            </div>
+          </Grid>
+        </Grid>
+
+        <Footer />
       </div>
       <FormDialog
         open={isDialog}
         title={t('attention')}
         usedFor="alert"
         descr={t('are_you_sure-cart')}
-        handleClose={() => setIsDialog(false)}
+        handleClose={() => setDialog(false)}
       >
         <div className={styles.flexbox}>
-          <Button color="grayscale" onClick={() => setIsDialog(false)}>
+          <Button color="grayscale" onClick={() => setDialog(false)}>
             {t('no')}
           </Button>
           <Button onClick={() => dispatch(CLEAR())}>{t('yes')}</Button>
